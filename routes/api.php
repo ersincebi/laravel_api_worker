@@ -22,18 +22,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /**
  * Routes:
- * [commentline]
- * [Link]
- * [Method]
+ * url: localhost:8081/api/register
+ * method: post
+ * exp: adds new register to table and returns client_token
  * 
  */
 Route::resource('register', RegisterController::class);
 
 /**
  * Routes:
- * [commentline]
- * [Link]
- * [Method]
+ * url: localhost:8081/api/purchase
+ * method: post
+ * exp: adds new purchase to table and status and expire_date
  * 
  */
 Route::resource('purchase', PurchaseController::class);

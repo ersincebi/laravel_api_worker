@@ -10,56 +10,56 @@ use Illuminate\Http\Request;
 
 class RegisterParser
 {
-	/**
-	 * @return RegisterAddOrUpdateRequest
-	 */
-	static function parseRegisterAddOrUpdate(Request $request)
-	{
-		$registerAddOrUpdateRequest = new RegisterAddOrUpdateRequest();
+    /**
+     * @return RegisterAddOrUpdateRequest
+     */
+    static function parseRegisterAddOrUpdate(Request $request)
+    {
+        $registerAddOrUpdateRequest = new RegisterAddOrUpdateRequest();
 
-		if($request->input(RegisterKeys::ID) !== null)
-			$registerAddOrUpdateRequest->setId($request->input(RegisterKeys::ID));
+        if($request->input(RegisterKeys::ID) !== null)
+            $registerAddOrUpdateRequest->setId($request->input(RegisterKeys::ID));
 
-		if($request->input(RegisterKeys::UID) !== null)
-			$registerAddOrUpdateRequest->setUid($request->input(RegisterKeys::UID));
+        if($request->input(RegisterKeys::UID) !== null)
+            $registerAddOrUpdateRequest->setUid($request->input(RegisterKeys::UID));
 
-		if($request->input(RegisterKeys::APPID) !== null)
-			$registerAddOrUpdateRequest->setAppId($request->input(RegisterKeys::APPID));
+        if($request->input(RegisterKeys::APPID) !== null)
+            $registerAddOrUpdateRequest->setAppId($request->input(RegisterKeys::APPID));
 
-		if($request->input(RegisterKeys::LANGUAGE) !== null)
-			$registerAddOrUpdateRequest->setLanguage($request->input(RegisterKeys::LANGUAGE));
+        if($request->input(RegisterKeys::LANGUAGE) !== null)
+            $registerAddOrUpdateRequest->setLanguage($request->input(RegisterKeys::LANGUAGE));
 
-		if($request->header('User-Agent') !== null)
-			$registerAddOrUpdateRequest->setDeviceOs($request->header('User-Agent'));
+        if($request->header('User-Agent') !== null)
+            $registerAddOrUpdateRequest->setDeviceOs($request->header('User-Agent'));
 
-		return $registerAddOrUpdateRequest;
-	}
+        return $registerAddOrUpdateRequest;
+    }
 
-	/**
-	 * @param Request $request
-	 * 
-	 * @return RegisterRequest
-	 */
-	static function parseRegisterGet($uid)
-	{
-		$registerRequest = new RegisterRequest();
+    /**
+     * @param Request $request
+     * 
+     * @return RegisterRequest
+     */
+    static function parseRegisterGet($uid)
+    {
+        $registerRequest = new RegisterRequest();
 
-		$registerRequest->setUid($uid);
+        $registerRequest->setUid($uid);
 
-		return $registerRequest;
-	}
+        return $registerRequest;
+    }
 
-	/**
-	 * @param Request $request
-	 * 
-	 * @return RegisterRequest
-	 */
-	static function parseRegisterDelete($id)
-	{
-		$registerDeleteRequest = new RegisterDeleteRequest();
+    /**
+     * @param Request $request
+     * 
+     * @return RegisterRequest
+     */
+    static function parseRegisterDelete($id)
+    {
+        $registerDeleteRequest = new RegisterDeleteRequest();
 
-		$registerDeleteRequest->setUid($id);
+        $registerDeleteRequest->setUid($id);
 
-		return $registerDeleteRequest;
-	}
+        return $registerDeleteRequest;
+    }
 }

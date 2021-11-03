@@ -11,113 +11,113 @@ use Exception;
 
 class RegisterService
 {
-	/**
-	 * @return ApiResult
-	 * @throws Exception
-	 */
-	public static function registerList()
-	{
-		$apiResult = new ApiResult();
+    /**
+     * @return ApiResult
+     * @throws Exception
+     */
+    public static function registerList()
+    {
+        $apiResult = new ApiResult();
 
-		$registerListResult = RegisteredDevicesModel::registerList();
+        $registerListResult = RegisteredDevicesModel::registerList();
 
-		if($registerListResult) {
-			$apiResult->setData($registerListResult);
-			$apiResult->setSuccess(true);
-		}
+        if($registerListResult) {
+            $apiResult->setData($registerListResult);
+            $apiResult->setSuccess(true);
+        }
 
-		return $apiResult;
-	}
+        return $apiResult;
+    }
 
-	/**
-	 * @param RegisterRequest
-	 * @return ApiResult
-	 * @throws Exception
-	 */
-	public static function registerGet(RegisterRequest $registerRequest)
-	{
-		$apiResult = new ApiResult();
+    /**
+     * @param RegisterRequest
+     * @return ApiResult
+     * @throws Exception
+     */
+    public static function registerGet(RegisterRequest $registerRequest)
+    {
+        $apiResult = new ApiResult();
 
-		$registerGetResult = RegisteredDevicesModel::registerGet($registerRequest);
+        $registerGetResult = RegisteredDevicesModel::registerGet($registerRequest);
 
-		if($registerGetResult) {
-			$apiResult->setData($registerGetResult);
-			$apiResult->setSuccess(true);
-		}
+        if($registerGetResult) {
+            $apiResult->setData($registerGetResult);
+            $apiResult->setSuccess(true);
+        }
 
-		return $apiResult;
-	}
+        return $apiResult;
+    }
 
-	/**
-	 * @param RegisterAddOrUpdateRequest $registerAddOrUpdateRequest
-	 * 
-	 * @return ApiResult
-	 * @throws Exception
-	 */
-	public static function registerAdd(RegisterAddOrUpdateRequest $registerAddOrUpdateRequest)
-	{
-		$apiResult = new ApiResult();
+    /**
+     * @param RegisterAddOrUpdateRequest $registerAddOrUpdateRequest
+     * 
+     * @return ApiResult
+     * @throws Exception
+     */
+    public static function registerAdd(RegisterAddOrUpdateRequest $registerAddOrUpdateRequest)
+    {
+        $apiResult = new ApiResult();
 
-		$registerAddResult = RegisteredDevicesModel::registerAddOrUpdate($registerAddOrUpdateRequest);
+        $registerAddResult = RegisteredDevicesModel::registerAddOrUpdate($registerAddOrUpdateRequest);
 
-		if($registerAddResult) {
-			$apiResult->setData([
-				"register" => $registerAddResult,
-				"client_token" => GlobalHelpers::makeClientToken($registerAddOrUpdateRequest)
-			]);
-			$apiResult->setSuccess(true);
-		}
+        if($registerAddResult) {
+            $apiResult->setData([
+                "register" => $registerAddResult,
+                "client_token" => GlobalHelpers::makeClientToken($registerAddOrUpdateRequest)
+            ]);
+            $apiResult->setSuccess(true);
+        }
 
-		return $apiResult;
-	}
+        return $apiResult;
+    }
 
-	/**
-	 * @param RegisterAddOrUpdateRequest $registerAddOrUpdateRequest
-	 * 
-	 * @return ApiResult
-	 * @throws Exception
-	 */
-	public static function registerUpdate(RegisterAddOrUpdateRequest $registerAddOrUpdateRequest)
-	{
-		$apiResult = new ApiResult();
+    /**
+     * @param RegisterAddOrUpdateRequest $registerAddOrUpdateRequest
+     * 
+     * @return ApiResult
+     * @throws Exception
+     */
+    public static function registerUpdate(RegisterAddOrUpdateRequest $registerAddOrUpdateRequest)
+    {
+        $apiResult = new ApiResult();
 
-		if($registerAddOrUpdateRequest->getUid() === null) {
-			$apiResult->setErrors([
-				'error' => 'Register uid cannot be empty.'
-			]);
+        if($registerAddOrUpdateRequest->getUid() === null) {
+            $apiResult->setErrors([
+                'error' => 'Register uid cannot be empty.'
+            ]);
 
-			return $apiResult;
-		}
+            return $apiResult;
+        }
 
-		$registerUpdateResult = RegisteredDevicesModel::registerAddOrUpdate($registerAddOrUpdateRequest);
+        $registerUpdateResult = RegisteredDevicesModel::registerAddOrUpdate($registerAddOrUpdateRequest);
 
-		// Incase of returning false
-		if(!$registerUpdateResult)
-			return $apiResult;
-		
-		$apiResult->setSuccess(true);
+        // Incase of returning false
+        if(!$registerUpdateResult)
+            return $apiResult;
+        
+        $apiResult->setSuccess(true);
 
-		return $apiResult;
-	}
+        return $apiResult;
+    }
 
-	/**
-	 * @param RegisterDeleteRequest $registerAddOrUpdateRequest
-	 * 
-	 * @return ApiResult
-	 * @throws Exception
-	 */
-	public static function registerDelete(RegisterDeleteRequest $registerDeleteRequest)
-	{
-		$apiResult = new ApiResult();
+    /**
+     * @param RegisterDeleteRequest $registerAddOrUpdateRequest
+     * 
+     * @return ApiResult
+     * @throws Exception
+     */
+    public static function registerDelete(RegisterDeleteRequest $registerDeleteRequest)
+    {
+        $apiResult = new ApiResult();
 
-		$registerDeleteResult = RegisteredDevicesModel::registerDelete($registerDeleteRequest);
+        $registerDeleteResult = RegisteredDevicesModel::registerDelete($registerDeleteRequest);
 
-		// Incase of returning false
-		if($registerDeleteResult) {
-			$apiResult->setData($registerDeleteResult);
-			$apiResult->setSuccess(true);
-		}
+        // Incase of returning false
+        if($registerDeleteResult) {
+            $apiResult->setData($registerDeleteResult);
+            $apiResult->setSuccess(true);
+        }
 
-		return $apiResult;
-	}
+        return $apiResult;
+    }
 }
