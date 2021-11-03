@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CRON\UpdateExpiredRecordsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/**
+ * url: localhost:8081/update-expired-dates
+ * method: GET
+ * parameter: No parameter needed
+ */
+Route::get('update-expired-dates', [UpdateExpiredRecordsController::class, 'index']);
