@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "ead2d9db-eaf5-4e14-ac79-abe0d3f24220",
+		"name": "laravel_subscription_managment_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DeviceRegister",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "iOS",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"uid\": 1,\n    \"appId\": 1,\n    \"language\": \"tr\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PurchaseRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "iOS",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"client_token\": \"$2y$10$b1Ucr.eIkJcuP0u.OexATOuDKzlAAL2mPJF/wBuFSl3NhIw4G319G\",\n    \"receipt_hash\": \"asljdkbbn8\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/purchase",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"purchase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateExpiredRecords",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/update-expired-dates",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"update-expired-dates"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
