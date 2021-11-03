@@ -11,73 +11,73 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-		$registerListResult = RegisterService::registerList();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $registerListResult = RegisterService::registerList();
 
-		return response()->json(GlobalHelpers::objectToArray($registerListResult));
-	}
+        return response()->json(GlobalHelpers::objectToArray($registerListResult));
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
-	{
-		$registerAddRequest = RegisterParser::parseRegisterAddOrUpdate($request);
-		$registerAddResult = RegisterService::registerAdd($registerAddRequest);
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $registerAddRequest = RegisterParser::parseRegisterAddOrUpdate($request);
+        $registerAddResult = RegisterService::registerAdd($registerAddRequest);
 
-		return response()->json(GlobalHelpers::objectToArray($registerAddResult));
-	}
+        return response()->json(GlobalHelpers::objectToArray($registerAddResult));
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show(RegisteredDevicesModel $registerAddRequest)
-	{
-		$registerGetRequest = RegisterParser::parseRegisterGet($registerAddRequest);
-		$registerGetResult = RegisterService::registerGet($registerGetRequest);
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(RegisteredDevicesModel $registerAddRequest)
+    {
+        $registerGetRequest = RegisterParser::parseRegisterGet($registerAddRequest);
+        $registerGetResult = RegisterService::registerGet($registerGetRequest);
 
-		return response()->json(GlobalHelpers::objectToArray($registerGetResult));
-	}
+        return response()->json(GlobalHelpers::objectToArray($registerGetResult));
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Models\RegisteredDevicesModel $registerAddRequest
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, RegisteredDevicesModel $registerAddRequest)
-	{
-		$registerUpdateRequest = RegisterParser::parseRegisterAddOrUpdate($request);
-		$registerUpdateResult = RegisterService::registerUpdate($registerUpdateRequest);
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\RegisteredDevicesModel $registerAddRequest
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, RegisteredDevicesModel $registerAddRequest)
+    {
+        $registerUpdateRequest = RegisterParser::parseRegisterAddOrUpdate($request);
+        $registerUpdateResult = RegisterService::registerUpdate($registerUpdateRequest);
 
-		return response()->json(GlobalHelpers::objectToArray($registerUpdateResult));
-	}
+        return response()->json(GlobalHelpers::objectToArray($registerUpdateResult));
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Models\RegisteredDevicesModel $registerAddRequest
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(RegisteredDevicesModel $registerAddRequest)
-	{
-		
-		$registerDeleteRequest = RegisterParser::parseRegisterDelete($registerAddRequest);
-		$registerDeleteResult = RegisterService::registerDelete($registerDeleteRequest);
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\RegisteredDevicesModel $registerAddRequest
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(RegisteredDevicesModel $registerAddRequest)
+    {
+        
+        $registerDeleteRequest = RegisterParser::parseRegisterDelete($registerAddRequest);
+        $registerDeleteResult = RegisterService::registerDelete($registerDeleteRequest);
 
-		return response()->json(GlobalHelpers::objectToArray($registerDeleteResult));
-	}
+        return response()->json(GlobalHelpers::objectToArray($registerDeleteResult));
+    }
 }

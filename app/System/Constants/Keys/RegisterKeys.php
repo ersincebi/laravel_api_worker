@@ -4,13 +4,13 @@ namespace App\System\Constants\Keys;
 
 class RegisterKeys
 {
-	const ID = 'id';
+    const ID = 'id';
 
-	const UID = 'uid';
+    const UID = 'uid';
 
-	const APPID = 'appId';
+    const APPID = 'appId';
 
-	const LANGUAGE = 'language';
+    const LANGUAGE = 'language';
 
-	const DEVICE_OS = 'device_os';
+    const DEVICE_OS = 'device_os';
 }
