@@ -55,7 +55,8 @@ class RegisteredDevicesModel extends Model
      */
     public static function registerList()
     {
-        return self::all();
+        return self::select('appId', 'device_os', 'DAYNAME(created_ad)')
+                    ->get();
     }
 
     /**
