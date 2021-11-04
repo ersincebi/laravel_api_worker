@@ -23,7 +23,7 @@ class CreateRegisteredDevicesTable extends Migration
             $table->string('language');
             $table->string('device_os');
             $table->timestamps();
-            $table->engine = 'InnoDB';
+            $table->engine = 'MyISAM';
         });
     }
 

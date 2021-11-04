@@ -19,6 +19,7 @@ class CreateCronLogsTable extends Migration
             $table->string('message');
             $table->enum('status', ['ERROR', 'WARNING', 'SUCCESS']);
             $table->datetime('add_date');
+            $table->engine = 'MyISAM';
         });
     }
 

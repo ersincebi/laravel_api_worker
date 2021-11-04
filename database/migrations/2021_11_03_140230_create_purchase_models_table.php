@@ -20,7 +20,7 @@ class CreatePurchaseModelsTable extends Migration
             $table->boolean('status');
             $table->datetime('expire_date');
             $table->timestamps();
-            $table->engine = 'InnoDB';
+            $table->engine = 'MyISAM';
         });
     }
 
