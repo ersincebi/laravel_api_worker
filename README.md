@@ -20,6 +20,7 @@ Implementation of an API application using the Laravel Framework [https://larave
 ### Usage
 - You may use the the postman collection file that inside the main directory of the project
 - The base will be `http://localhost:8081`
+- Change the .env.example as .env
 
 ### About:
 - In this project, I use PHP version 8 and laravel framework version 8.
