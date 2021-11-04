@@ -26,6 +26,7 @@ Implementation of an API application using the Laravel Framework [https://larave
 - In this project, I use PHP version 8 and laravel framework version 8.
 - As a database engine I prefer to use MyISAM, because the engine is faster with add, update, delete operations, so I thought it would be better.
 - In the base controller I max the max_execution_time to make sure the project works fine under load.
+- There might be only memory_limit could exceed, but it can be solved by increasing it.
 - 
 
 #### Requests
