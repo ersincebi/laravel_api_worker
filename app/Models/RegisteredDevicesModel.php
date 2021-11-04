@@ -8,6 +8,7 @@ use App\Request\Register\RegisterRequest;
 use Datetime;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredDevicesModel extends Model
 {
@@ -29,8 +30,9 @@ class RegisteredDevicesModel extends Model
         }
 
         if($registerAddOrUpdateRequest->getUid() !== null){
-            $query = self::find($registerAddOrUpdateRequest->getUid());
-            if($query->count())
+            $isExist = self::where('uid', '=', $registerAddOrUpdateRequest->getUid())
+                          ->get();
+            if($isExist->count())
                 return false;
             else
                 $query->uid = $registerAddOrUpdateRequest->getUid();
@@ -55,7 +57,7 @@ class RegisteredDevicesModel extends Model
      */
     public static function registerList()
     {
-        return self::select('appId', 'device_os', 'DAYNAME(created_ad)')
+        return self::select('appId', 'device_os', DB::raw('DAYNAME(created_at) as day'))
                     ->get();
     }
 
